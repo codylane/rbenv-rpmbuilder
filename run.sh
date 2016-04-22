@@ -15,7 +15,7 @@ PUBLISHED_PORT=$(docker inspect -f '{{(index (index .NetworkSettings.Ports "8080
 HOST_INFO=
 if [ -n "$DOCKER_HOST" ]; then
   HOST_INFO="${DOCKER_HOST#tcp://}"
-  HOST_INFO="${DOCKER_HOST%:2375}"
+  HOST_INFO="${HOST_INFO%:*}"
 else
   HOST_INFO=$(hostname -i)
 fi
